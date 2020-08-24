@@ -47,18 +47,59 @@ class Router {
                                 msg: 'Invalid password'
                             })
                         }
-                    }
+                    } 
+                } else {
+                    res.json({
+                        success: false,
+                        msg: 'User not found'
+                    })
                 }
-            })
-        })
+            });
+        });
 
     }
 
     logout(app, db) {
+        app.post('/logout', (req, res) => {
+            if (req.session.userID) {
+                req.session.destroy();
+                res.json({
+                    success: true
+                })
+                return true;
+            } else {
+                res.json({
+                    success: false
+                })
+                return false;
+            }
+        })
 
     }
 
     isLoggedIn(app, db) {
+        app.post('/isLoggedIn', (req, res) => {
+            if (req.session.userID) {
+                let cols = [req.session.userID];
+                db.query('SELECT * FROM user WHERE id = ? LIMIT 1', (err, data, fields) => {
+                    if (data && data.length === 1) {
+                        res.json({
+                            success: true,
+                            username: data[0].username
+                        })
+                        return true;
+                    } else {
+                        res.json({
+                            success: false
+                        })
+                    }
+                });
+            } else {
+                res.json({
+                    success: false
+                })
+            }
+        });
 
     }
 }
