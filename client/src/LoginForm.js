@@ -54,6 +54,7 @@ class LoginForm extends React.Component {
                     username: this.state.username,
                     password: this.state.password
                 })
+                
             });
 
             let result = await res.json();
