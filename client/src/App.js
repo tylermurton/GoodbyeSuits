@@ -14,7 +14,7 @@ class App extends React.Component {
     async componentDidMount() {
         try {
             let res = await fetch('/isLoggedIn', {
-                method: 'post',
+                method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -22,19 +22,22 @@ class App extends React.Component {
             });
 
             let result = await res.json();
+            console.log(result);
 
             if (result && result.success) {
+                
                 UserStore.loading = false;
-                UserStore.isLoggedin = true;
+                UserStore.isLoggedIn = true;
                 UserStore.username = result.username;
+                console.log(UserStore, 'HELLO WORLD');
             } else {
                 UserStore.loading = false;
-                UserStore.isLoggedin = false;
+                UserStore.isLoggedIn = false;
             }
         }
         catch (e) {
             UserStore.loading = false;
-            UserStore.isLoggedin = false;
+            UserStore.isLoggedIn = false;
             console.log('not workingg')
 
         }
@@ -55,7 +58,7 @@ class App extends React.Component {
 
             if (result && result.success) {
 
-                UserStore.isLoggedin = false;
+                UserStore.isLoggedIn = false;
                 UserStore.username = '';
             }
         }
@@ -79,7 +82,7 @@ class App extends React.Component {
                 </div>
             );
         } else {
-            if (UserStore.isLoggedin) {
+            if (UserStore.isLoggedIn) {
                 return (
                     <div className="app">
                         <div className="container">
@@ -104,8 +107,8 @@ class App extends React.Component {
             }
 
 
-           if(!UserStore.isLoggedin) {
-            console.log('user store is saying not logged in');
+           if(!UserStore.isLoggedIn) {
+          
            return (
                 
                 <div className="app">
