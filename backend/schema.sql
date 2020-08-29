@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS ByeSuitsLogin;
 CREATE DATABASE IF NOT EXISTS ByeSuitsLogin;
 USE ByeSuitsLogin;
 
+
 CREATE TABLE user (
 	id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(240) NOT NULL,
@@ -9,4 +10,4 @@ CREATE TABLE user (
     PRIMARY KEY(id)
 );
 
-INSERT INTO user (username, password) VALUES ('jon', '12345');
+INSERT INTO user (username, password) VALUES ('jon', '$2b$09$PkCSMPlN7fwBVAtpMRSk8.sKupplGmG4QDjfkrd/sRRRtun1GcX06');

@@ -1,4 +1,4 @@
-const bcrpyt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 
 class Router {
@@ -6,8 +6,8 @@ class Router {
         this.login(app, db);
         this.logout(app, db);
         this.isLoggedIn(app, db);
-        
 
+        
     }
 
     login(app, db) {
@@ -34,7 +34,7 @@ class Router {
                     return;
                 }
                 if (data && data.length === 1) {
-                    bcrpyt.compare(password, data[0].password, (bcrpytErr, verified) => {
+                    bcrypt.compare(password, data[0].password, (bcryptErr, verified) => {
                         if (verified) {
                             req.session.userID = data[0].id;
                             res.json({
