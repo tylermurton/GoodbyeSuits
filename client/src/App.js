@@ -104,7 +104,10 @@ class App extends React.Component {
             }
 
 
-            return (
+           if(!UserStore.isLoggedin) {
+            console.log('user store is saying not logged in');
+           return (
+                
                 <div className="app">
 
                     <div className="container">
@@ -117,7 +120,7 @@ class App extends React.Component {
 
                     </div>
                 </div>
-            )
+            ) }
         }
     }
 }
