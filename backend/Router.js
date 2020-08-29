@@ -88,6 +88,7 @@ class Router {
                             success: true,
                             username: data[0].username
                         })
+                        console.log('YOU ARE LOGGED IN RN')
                         return true;
                     } else {
                         res.json({

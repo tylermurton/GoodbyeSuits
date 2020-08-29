@@ -93,6 +93,12 @@ class App extends React.Component {
 
                         </div>
 
+                    <Wrapper>
+                        <Header />
+                        <Main />
+                    </Wrapper>
+
+
                     </div>
                 )
             }
