@@ -16,6 +16,7 @@ const db = mysql.createConnection({
     user: 'root',
     password: 'password123',
     database: 'ByeSuitsLogin'
+    
 });
 
 db.connect(function(err) {
@@ -24,6 +25,7 @@ db.connect(function(err) {
         throw err;
         return false;
     }
+    console.log("connected to sql db")
 });
 
 const sessionStore = new MySQLStore({

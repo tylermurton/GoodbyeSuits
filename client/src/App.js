@@ -41,6 +41,7 @@ class App extends React.Component {
     };
 
     async doLogout() {
+        console.log('LOGGING OUTT');
         try {
             let res = await fetch('/logout', {
                 method: 'post',
@@ -76,7 +77,7 @@ class App extends React.Component {
                     </div>
 
                 </div>
-            )
+            );
         } else {
             if (UserStore.isLoggedin) {
                 return (
@@ -95,22 +96,23 @@ class App extends React.Component {
                     </div>
                 )
             }
-        }
 
-        return (
-            <div className="app">
-                
-                <div className="container">
-                    <img src="favicon.ico" className="favicon"></img>
-                    <div>NO SUITS ALLOWED!</div>
-                    
-                    <LoginForm
 
-                    />
+            return (
+                <div className="app">
 
+                    <div className="container">
+                        <img src="favicon.ico" className="favicon"></img>
+                        <div>NO SUITS ALLOWED!</div>
+
+                        <LoginForm
+
+                        />
+
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 

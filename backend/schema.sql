@@ -9,4 +9,4 @@ CREATE TABLE user (
     PRIMARY KEY(id)
 );
 
-INSERT INTO user (username, password) VALUES ('jon', '$2b$09$9c93nOp0xjco3ZAjzdT8GOIaBBGED/crqNyegf3yd9CrjXWBhI01C');
+INSERT INTO user (username, password) VALUES ('jon', '12345');

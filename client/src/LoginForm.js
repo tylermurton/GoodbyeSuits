@@ -33,6 +33,7 @@ class LoginForm extends React.Component {
     }
 
     async doLogin() {
+        console.log('testing login');
         if (!this.state.username) {
             return;
         }
@@ -59,7 +60,7 @@ class LoginForm extends React.Component {
 
             let result = await res.json();
             if (result && result.success) {
-                UserStore.isLoggenIn = true;
+                UserStore.isLoggedIn = true;
                 UserStore.username = result.username;
             } else if (result && result.success === false) {
                 this.resetForm();
@@ -92,7 +93,7 @@ class LoginForm extends React.Component {
                 <SubmitButton 
                     text= 'Login'
                     disabled={this.state.buttonDisabled}
-                    onClick={ () => this.doLogin }
+                    onClick={ () => this.doLogin() }
                 />
             </div>
         );

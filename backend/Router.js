@@ -34,7 +34,7 @@ class Router {
                     return;
                 }
                 if (data && data.length === 1) {
-                    bcrpyt.compare(password, data[0].password), (bcrpytErr, verified) => {
+                    bcrpyt.compare(password, data[0].password, (bcrpytErr, verified) => {
                         if (verified) {
                             req.session.userID = data[0].id;
                             res.json({
@@ -48,7 +48,7 @@ class Router {
                                 msg: 'Invalid password'
                             })
                         }
-                    } 
+                    });
                 } else {
                     res.json({
                         success: false,
@@ -82,7 +82,7 @@ class Router {
         app.post('/isLoggedIn', (req, res) => {
             if (req.session.userID) {
                 let cols = [req.session.userID];
-                db.query('SELECT * FROM user WHERE id = ? LIMIT 1', (err, data, fields) => {
+                db.query('SELECT * FROM user WHERE id = ? LIMIT 1', cols, (err, data, fields) => {
                     if (data && data.length === 1) {
                         res.json({
                             success: true,
