@@ -25,7 +25,7 @@ class App extends React.Component {
             console.log(result);
 
             if (result && result.success) {
-                
+
                 UserStore.loading = false;
                 UserStore.isLoggedIn = true;
                 UserStore.username = result.username;
@@ -94,12 +94,14 @@ class App extends React.Component {
                                 onClick={() => this.doLogout()}
                             />
 
+                            <Wrapper>
+                                <Header />
+                                <Main />
+                            </Wrapper>
+
+
                         </div>
 
-                    <Wrapper>
-                        <Header />
-                        <Main />
-                    </Wrapper>
 
 
                     </div>
@@ -107,23 +109,24 @@ class App extends React.Component {
             }
 
 
-           if(!UserStore.isLoggedIn) {
-          
-           return (
-                
-                <div className="app">
+            if (!UserStore.isLoggedIn) {
 
-                    <div className="container">
-                        <img src="favicon.ico" className="favicon"></img>
-                        <div>NO SUITS ALLOWED!</div>
+                return (
 
-                        <LoginForm
+                    <div className="app">
 
-                        />
+                        <div className="container">
+                            <img src="favicon.ico" className="favicon"></img>
+                            <div>NO SUITS ALLOWED!</div>
 
+                            <LoginForm
+
+                            />
+
+                        </div>
                     </div>
-                </div>
-            ) }
+                )
+            }
         }
     }
 }

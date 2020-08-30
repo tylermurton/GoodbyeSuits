@@ -60,3 +60,11 @@ body, html, #root, .app, .container {
   .favicon {
       height: 200px;
   }
+
+  div {
+    color: white;
+  }
+
+  th {
+    color: white;
+  }
