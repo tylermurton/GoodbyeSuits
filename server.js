@@ -6,10 +6,13 @@ const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const Router = require('./Router');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
-app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.json());
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+  }
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -47,10 +50,10 @@ app.use(session({
 
 new Router(app, db);
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'build, index.html'));
-
-});
+app.get("*", function(req, res) {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  });
+  
 
 app.listen(PORT, () => {
     console.log(`App listening on PORT ${PORT}`);

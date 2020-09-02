@@ -1,35 +1,23 @@
 import React, { Component } from "react";
 
-class RateBar extends Component {
-  state = {
-    buyrating: 0,
-    holdrating: "",
-    sellrating: ""
-  };
 
-  render() {
+
+
+
+const RateBar = (props) => {
+    const { buyrating, holdrating, sellrating } = props.ratingdata;
     return (
       <div>
-      Buy: {this.state.buyrating}, Hold: {this.state.holdrating}
+        <div>
+          <span>{`${buyrating}%`}</span>
+          <br/>
+          <span>{`${holdrating}%`}</span>
+          <br/>
+          <span>{`${sellrating}%`}</span>
+          
+        </div>
       </div>
-    )
-
-  }
-
-
-
-
-}
-
-// const RateBar = (props) => {
-//     const { bgcolor, buyrating } = props;
-//     return (
-//       <div>
-//         <div>
-//           <span>{`${buyrating}%`}</span>
-//         </div>
-//       </div>
-//     );
-//   };
+    );
+  };
   
   export default RateBar;
