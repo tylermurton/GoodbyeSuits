@@ -9,11 +9,11 @@ const RateBar = (props) => {
     return (
       <div>
         <div>
-          <span>{`${buyrating}%`}</span>
+          <span>{`${buyrating}`}</span>
           <br/>
-          <span>{`${holdrating}%`}</span>
+          <span>{`${holdrating}`}</span>
           <br/>
-          <span>{`${sellrating}%`}</span>
+          <span>{`${sellrating}`}</span>
           
         </div>
       </div>

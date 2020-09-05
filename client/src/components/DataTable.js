@@ -8,7 +8,7 @@ import Buttons from "./Buttons";
 class DataTable extends React.Component {
   constructor(props) {
     super(props);
-    const { headings, users, handleSort } = props;
+    const { headings, stonks, handleSort } = props;
     this.updateStateValues = this.updateStateValues.bind(this);
     this.state = {
       amazon: {
@@ -383,6 +383,12 @@ class DataTable extends React.Component {
         sellrating: 0
       },
 
+      paypal: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
       royalcaribbean: {
         buyrating: 0,
         holdrating: 0,
@@ -401,9 +407,101 @@ class DataTable extends React.Component {
         sellrating: 0
       },
 
+      roku: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
 
-  
+      spirit: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
 
+      starbucks: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      shakeshack: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      shopify: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      spotify: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      square: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      target: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      tesla: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      twilio: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      uber: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      wayfair: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      walmart: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      slack: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      zillow: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
+
+      zoom: {
+        buyrating: 0,
+        holdrating: 0,
+        sellrating: 0
+      },
 
     };
   }
@@ -997,6 +1095,15 @@ class DataTable extends React.Component {
           </tr>
 
           <tr>
+            <th>Paypal</th>
+            <th>PYPL</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="paypal" />
+            </th>
+            <th><RateBar ratingdata={this.state.paypal} /></th>
+          </tr>
+
+          <tr>
             <th>Royal Caribbean</th>
             <th>RCL</th>
             <th>
@@ -1022,6 +1129,153 @@ class DataTable extends React.Component {
             </th>
             <th><RateBar ratingdata={this.state.rocketcompanies} /></th>
           </tr>
+
+          <tr>
+            <th>Roku</th>
+            <th>ROKU</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="roku" />
+            </th>
+            <th><RateBar ratingdata={this.state.roku} /></th>
+          </tr>
+
+          <tr>
+            <th>Spirit Airlines</th>
+            <th>SAVE</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="spirit" />
+            </th>
+            <th><RateBar ratingdata={this.state.spirit} /></th>
+          </tr>
+
+          <tr>
+            <th>Starbucks</th>
+            <th>SBUX</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="starbucks" />
+            </th>
+            <th><RateBar ratingdata={this.state.starbucks} /></th>
+          </tr>
+
+          <tr>
+            <th>Shake Shack</th>
+            <th>SHAK</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="shakeshack" />
+            </th>
+            <th><RateBar ratingdata={this.state.shakeshack} /></th>
+          </tr>
+
+          <tr>
+            <th>Shopify</th>
+            <th>SHOP</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="shopify" />
+            </th>
+            <th><RateBar ratingdata={this.state.shopify} /></th>
+          </tr>
+
+          <tr>
+            <th>Spotify</th>
+            <th>SPOT</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="spotify" />
+            </th>
+            <th><RateBar ratingdata={this.state.spotify} /></th>
+          </tr>
+
+          <tr>
+            <th>Square</th>
+            <th>SQ</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="square" />
+            </th>
+            <th><RateBar ratingdata={this.state.square} /></th>
+          </tr>
+
+          <tr>
+            <th>Target</th>
+            <th>TGT</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="target" />
+            </th>
+            <th><RateBar ratingdata={this.state.target} /></th>
+          </tr>
+
+          <tr>
+            <th>Tesla</th>
+            <th>TSLA</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="tesla" />
+            </th>
+            <th><RateBar ratingdata={this.state.tesla} /></th>
+          </tr>
+
+          <tr>
+            <th>Twilio</th>
+            <th>TWLO</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="twilio" />
+            </th>
+            <th><RateBar ratingdata={this.state.twilio} /></th>
+          </tr>
+
+          <tr>
+            <th>Uber</th>
+            <th>UBER</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="uber" />
+            </th>
+            <th><RateBar ratingdata={this.state.uber} /></th>
+          </tr>
+
+          <tr>
+            <th>Wayfair</th>
+            <th>W</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="wayfair" />
+            </th>
+            <th><RateBar ratingdata={this.state.wayfair} /></th>
+          </tr>
+
+          <tr>
+            <th>Walmart</th>
+            <th>WMT</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="walmart" />
+            </th>
+            <th><RateBar ratingdata={this.state.walmart} /></th>
+          </tr>
+
+          <tr>
+            <th>Slack</th>
+            <th>WORK</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="slack" />
+            </th>
+            <th><RateBar ratingdata={this.state.slack} /></th>
+          </tr>
+
+          <tr>
+            <th>Zillow</th>
+            <th>ZG</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="zillow" />
+            </th>
+            <th><RateBar ratingdata={this.state.zillow} /></th>
+          </tr>
+
+          <tr>
+            <th>Zoom</th>
+            <th>ZM</th>
+            <th>
+              <Buttons updateStateValues={this.updateStateValues} company="zoom" />
+            </th>
+            <th><RateBar ratingdata={this.state.zoom} /></th>
+          </tr>
+
+
+
 
 
 
