@@ -71,6 +71,8 @@ export default class Main extends Component {
       return values.indexOf(filter.toLowerCase()) !== -1;
     });
     this.setState({ filteredStonks: filteredList });
+
+    // if (event.target.value = )
   }
 
 
