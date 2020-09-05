@@ -11,50 +11,50 @@ export default class Main extends Component {
     filteredStonks: [{}]
   }
 
-  handleSort = heading => {
-    if (this.state.order === "descend") {
-      this.setState({
-        order: "ascend"
-      })
-    } else {
-      this.setState({
-        order: "descend"
-      })
-    }
+//   handleSort = heading => {
+//     if (this.state.order === "descend") {
+//       this.setState({
+//         order: "ascend"
+//       })
+//     } else {
+//       this.setState({
+//         order: "descend"
+//       })
+//     }
 
-  const compareFnc = (a, b) => {
-    if (this.state.order === "ascend") {
-      // account for missing values
-      if (a[heading] === undefined) {
-        return 1;
-      } else if (b[heading] === undefined) {
-        return -1;
-      }
-      // numerically
-      else if (heading === "name") {
-        return a[heading].first.localeCompare(b[heading].first);
-      } else {
-        return a[heading] - b[heading];
-      }
-    } else {
-      // account for missing values
-      if (a[heading] === undefined) {
-        return 1;
-      } else if (b[heading] === undefined) {
-        return -1;
-      }
-      // numerically
-      else if (heading === "name") {
-        return b[heading].first.localeCompare(a[heading].first);
-      } else {
-        return b[heading] - a[heading];
-      }
-    }
+//   const compareFnc = (a, b) => {
+//     if (this.state.order === "ascend") {
+//       // account for missing values
+//       if (a[heading] === undefined) {
+//         return 1;
+//       } else if (b[heading] === undefined) {
+//         return -1;
+//       }
+//       // numerically
+//       else if (heading === "name") {
+//         return a[heading].first.localeCompare(b[heading].first);
+//       } else {
+//         return a[heading] - b[heading];
+//       }
+//     } else {
+//       // account for missing values
+//       if (a[heading] === undefined) {
+//         return 1;
+//       } else if (b[heading] === undefined) {
+//         return -1;
+//       }
+//       // numerically
+//       else if (heading === "name") {
+//         return b[heading].first.localeCompare(a[heading].first);
+//       } else {
+//         return b[heading] - a[heading];
+//       }
+//     }
 
-  }
-  const sortedStonks = this.state.filteredStonks.sort(compareFnc);
-  this.setState({ filteredStonks: sortedStonks });
-}
+//   }
+//   const sortedStonks = this.state.filteredStonks.sort(compareFnc);
+//   this.setState({ filteredStonks: sortedStonks });
+// }
 
   
 
@@ -72,7 +72,12 @@ export default class Main extends Component {
     });
     this.setState({ filteredStonks: filteredList });
 
-    // if (event.target.value = )
+    var companies = document.getElementsByTagName("th").innerHTML;
+    console.log(companies)
+
+    // if (event.target.value = companies) {
+    //   console.log(companies);
+    // }
   }
 
 
@@ -91,7 +96,11 @@ export default class Main extends Component {
     return (
       <>
         <Nav handleSearchChange={this.handleSearchChange} />
-        <DataTable />
+        <DataTable
+          headings={this.headings}
+          stonks={this.state.filteredStonks}
+          handleSort={this.handleSort}
+        />
       </>
     );
   }
