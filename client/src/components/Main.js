@@ -1,104 +1,82 @@
 import React, { Component } from "react";
 import DataTable from "./DataTable";
 import Nav from "./Nav";
+import RateBar from "./RateBar";
+import Buttons from "./Buttons";
+import ReactDOM from 'react-dom';
 // import "../styles/Main.css";
 
 export default class Main extends Component {
 
+
+
   state = {
-    stonks: [{}],
-    order: "descend",
-    filteredStonks: [{}]
-  }
+    tableElements: [],
 
-//   handleSort = heading => {
-//     if (this.state.order === "descend") {
-//       this.setState({
-//         order: "ascend"
-//       })
-//     } else {
-//       this.setState({
-//         order: "descend"
-//       })
-//     }
 
-//   const compareFnc = (a, b) => {
-//     if (this.state.order === "ascend") {
-//       // account for missing values
-//       if (a[heading] === undefined) {
-//         return 1;
-//       } else if (b[heading] === undefined) {
-//         return -1;
-//       }
-//       // numerically
-//       else if (heading === "name") {
-//         return a[heading].first.localeCompare(b[heading].first);
-//       } else {
-//         return a[heading] - b[heading];
-//       }
-//     } else {
-//       // account for missing values
-//       if (a[heading] === undefined) {
-//         return 1;
-//       } else if (b[heading] === undefined) {
-//         return -1;
-//       }
-//       // numerically
-//       else if (heading === "name") {
-//         return b[heading].first.localeCompare(a[heading].first);
-//       } else {
-//         return b[heading] - a[heading];
-//       }
-//     }
 
-//   }
-//   const sortedStonks = this.state.filteredStonks.sort(compareFnc);
-//   this.setState({ filteredStonks: sortedStonks });
-// }
+  };
+
+  companies= [
+    { name: "Amazon", ticker: "amzn" },
+    { name: "American Airlines", ticker: "aal" }
+  ]
 
   
 
 
-
-  handleSearchChange = event => {
-    console.log(event.target.value);
+  renderTable(event) {
     const filter = event.target.value;
-    const filteredList = this.state.stonks.filter(item => {
-      // merge data together, then see if user input is anywhere inside
-      let values = Object.values(item)
-        .join("")
-        .toLowerCase();
-      return values.indexOf(filter.toLowerCase()) !== -1;
-    });
-    this.setState({ filteredStonks: filteredList });
+    console.log(filter);
+    const tableElements = this.companies.filter(company =>
+      company.name.toLowerCase().includes(filter)
+    ).map(company => {
+      return <tr key={company.ticker}>
+        <th>{company.name}</th>
+        <th>{company.ticker.toUpperCase()}</th>
+        <th>
+          <Buttons updateStateValues={this.updateStateValues} company={company.name.toLowerCase().replace(" ", "")} />
+        </th>
+        <th><RateBar ratingdata={this.state[company.name.toLowerCase().replace(" ", "")]} /></th>
+      </tr>
+    })
 
-    var companies = document.getElementsByTagName("th").innerHTML;
-    console.log(companies)
-
-    // if (event.target.value = companies) {
-    //   console.log(companies);
-    // }
+    this.setState({ tableElements })
   }
 
 
-  // componentDidMount() {
-  //   API.getStonks().then(results => {
-  //     this.setState({
-  //       stonks: results.data.results,
-  //       filteredStonks: results.data.results
-  //     });
+
+  // ***** move companies array here*****
+  //******move renderTable here******
+
+
+
+
+
+  // handleSearchChange = event => {
+
+  //   console.log(event.target.value);
+  //   const filter = event.target.value;
+  //   const filteredList = this.state.stonks.filter(item => {
+  //     // merge data together, then see if user input is anywhere inside
+  //     let values = Object.values(item)
+  //       .join("")
+  //       .toLowerCase();
+  //     return values.indexOf(filter.toLowerCase()) !== -1;
   //   });
+  //   this.setState({ filteredStonks: filteredList });
+
   // }
-  
+
   render() {
 
 
     return (
       <>
-        <Nav handleSearchChange={this.handleSearchChange} />
+        <Nav renderTable={this.renderTable} />   {/* instead of handleSearchChange use renderTable  */}
         <DataTable
           headings={this.headings}
-          stonks={this.state.filteredStonks}
+          tableElements={this.state.tableElements}
           handleSort={this.handleSort}
         />
       </>

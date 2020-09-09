@@ -6,10 +6,14 @@ import Buttons from "./Buttons";
 
 
 class DataTable extends React.Component {
+
+  
+
   constructor(props) {
     super(props);
-    const { headings, stonks, handleSort } = props;
+    const { headings, tableElements, handleSort } = props;
     this.updateStateValues = this.updateStateValues.bind(this);
+    // this.renderTable = this.renderTable.bind(this);
     this.state = {
       amazon: {
         buyrating: 0,
@@ -504,25 +508,57 @@ class DataTable extends React.Component {
       },
 
     };
+    // this.companies = [
+    //   {name:"Amazon", ticker: "amzn"},
+    //   {name:"American Airlines", ticker: "aal"}
+    // ]
   }
 
+  // renderTable(event){
+  //   const filter = event.target.value;
+  //      const tableElements =  this.companies.filter(company => 
+  //        company.name.toLowerCase().includes(filter)
+  //        ).map( company => {
+  //      return <tr key={company.ticker}>
+  //        <th>{company.name}</th>
+  //         <th>{company.ticker.toUpperCase()}</th>
+  //        <th>
+  //          <Buttons updateStateValues={this.updateStateValues} company={company.name.toLowerCase().replace(" ","")} />
+  //        </th>
+  //        <th><RateBar ratingdata={this.state[company.name.toLowerCase().replace(" ","")]} /></th>
+  //        </tr>
+  //      })
+
+  //      this.setState({tableElements})
+  // }
+
+
   updateStateValues(company, action) {
+    // ADD 1 TO COUNT
     console.log({ company })
     console.log({ action })
     let companyState = this.state[company.toLowerCase()];
     companyState[action] += 1;
-
-    this.setState({
+    
+ this.setState({
       [company]: companyState
     })
+
+
+
+    // SAVE TO LOCAL STORAGE
+    localStorage.setItem('testObject', JSON.stringify(companyState[action]));
+    var retrievedObject = localStorage.getItem('testObject');
+    console.log('retrievedObject', JSON.parse(retrievedObject));
+
+
+   
   }
 
-
+  
   render() {
 
     return (
-
-
 
       <div className="datatable mt-5">
 
@@ -535,7 +571,11 @@ class DataTable extends React.Component {
               <th>Rating</th>
             </tr>
           </thead>
-          <tr>
+          <tbody>
+         
+          </tbody>
+          {this.tableElements}
+          {/* <tr>
             <th>Amazon</th>
             <th>AMZN</th>
             <th>
@@ -1276,22 +1316,13 @@ class DataTable extends React.Component {
               <Buttons updateStateValues={this.updateStateValues} company="zoom" />
             </th>
             <th><RateBar ratingdata={this.state.zoom} /></th>
-          </tr>
-
-
-
-
-
-
-
-
-
-
+          </tr> */}
 
 
 
         </table>
       </div>
+      
     );
 
    
@@ -1299,6 +1330,7 @@ class DataTable extends React.Component {
  
 
 }
+
 
 
 export default DataTable;

@@ -3,7 +3,7 @@ import React from "react";
 
 
 
-function SearchBox({ handleSearchChange }) {
+function SearchBox({ renderTable }) {
   return (
     <div className="searchbox">
       <form className="form-inline">
@@ -12,7 +12,7 @@ function SearchBox({ handleSearchChange }) {
           type="search"
           placeholder="Search"
           aria-label="Search"
-          onChange={e => handleSearchChange(e)}
+          onChange={e => renderTable(e)}
         />
       </form>
     </div>
